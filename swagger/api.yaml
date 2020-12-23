@@ -1,0 +1,29 @@
+swagger: "2.0"
+info:
+  description: Garden Layout Solver
+  version: "1.0.0"
+  title: Garden Layout Solver
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api
+
+# Paths supported by the server application
+paths:
+  /config:
+    get:
+      x-swagger-router-controller: myapp.api
+      operationId: config.read
+      tags:
+        - Config
+      summary: Read the configuration
+      description: Read the configuration
+      responses:
+        200:
+          description: Successfully read configuration
+
+
+
+
