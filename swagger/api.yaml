@@ -57,12 +57,12 @@ definitions:
       - height
     properties:
       width:
-        type: number
+        type: integer
         description: Garden width
-        example: 5.5
+        example: 5
       height:
-        type: number
+        type: integer
         description: Garden height
-        example: 3.5
+        example: 3
 
 

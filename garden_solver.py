@@ -7,6 +7,8 @@ from constraints.filling import FillingRatioConstraint
 class GardenSolver:
     def __init__(self):
         self.problem = Problem(BacktrackingSolver())
+        self.problem.addVariable("a", [1, 2, 3])
+        self.problem.addVariable("b", [4, 5, 6])
         self.add_constraints()
 
     def add_constraints(self):
