@@ -38,14 +38,28 @@ paths:
           description: List of garden layout
 
 definitions:
+  VegetableInventory:
+    type: object
+    required:
+      - vegetables
+    properties:
+      vegetables:
+        type: array
+        items:
+          type: integer
+          example: 1
   GardenLayoutSpecification:
     type: object
     required:
       - garden
+      - vegetables_inventory
     properties:
       garden:
         $ref: '#/definitions/GardenSpecification'
         description: Garden specification
+      vegetables_inventory:
+        $ref: '#/definitions/VegetableInventory'
+        description: Vegetable inventory
       wanted_proposals:
         type: integer
         description: Number of proposals wanted
