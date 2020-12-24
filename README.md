@@ -28,7 +28,15 @@ curl --location --request POST 'http://localhost:8080/layout/recommend' \
 }'
 ```
 
-### Constraints
+### Using docker
+```shell script
+# build app image
+docker build -t garden-csp .
+# run app container
+docker run -p8080:8080 -t garden-csp
+```
+
+## Constraints
 
 #### Alignment constraint
 Enforce that vegetables are aligned on the layout.
