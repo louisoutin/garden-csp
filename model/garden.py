@@ -15,7 +15,6 @@ class Garden:
         self.garden_matrix = np.zeros((height, width), dtype=np.uint8)
 
     def print(self):
-        #print(self.garden_matrix)
         display_matrix(self.garden_matrix, self.width, self.height)
 
     def place_shape(self, shape_id, top_left_i, top_left_j):
