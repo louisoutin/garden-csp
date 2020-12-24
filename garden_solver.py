@@ -2,6 +2,7 @@ from constraint import Problem, BacktrackingSolver
 
 from constraints.alignment import AlignmentConstraint
 from constraints.filling import FillingRatioConstraint
+from constraints.no_overlap import NoOverlapConstraint
 
 
 class GardenSolver:
@@ -14,6 +15,7 @@ class GardenSolver:
     def add_constraints(self):
         self.problem.addConstraint(AlignmentConstraint())
         self.problem.addConstraint(FillingRatioConstraint(0.75))
+        self.problem.addConstraint(NoOverlapConstraint())
         return
 
     def solve(self):
