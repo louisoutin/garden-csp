@@ -8,22 +8,61 @@ consumes:
 produces:
   - application/json
 
-basePath: /api
-
 # Paths supported by the server application
 paths:
-  /config:
+  /:
     get:
-      x-swagger-router-controller: myapp.api
-      operationId: config.read
+      operationId: liveness.is_alive
       tags:
-        - Config
-      summary: Read the configuration
-      description: Read the configuration
+        - Liveness
+      summary: Check application status
+      description: Check application status
       responses:
         200:
-          description: Successfully read configuration
+          description: Successfully check liveness
 
+  /layout/recommend:
+    post:
+      operationId: layout.recommend
+      tags:
+        - Layout
+      summary: Recommend garden layout
+      description: Recommend garden layout based on user specification
+      parameters:
+        - name: specification
+          in: body
+          schema:
+            $ref: '#/definitions/GardenLayoutSpecification'
+      responses:
+        200:
+          description: List of garden layout
 
+definitions:
+  GardenLayoutSpecification:
+    type: object
+    required:
+      - garden
+    properties:
+      garden:
+        $ref: '#/definitions/GardenSpecification'
+        description: Garden specification
+      wanted_proposals:
+        type: integer
+        description: Number of proposals wanted
+        example: 10
+  GardenSpecification:
+    type: object
+    required:
+      - width
+      - height
+    properties:
+      width:
+        type: number
+        description: Garden width
+        example: 5.5
+      height:
+        type: number
+        description: Garden height
+        example: 3.5
 
 
