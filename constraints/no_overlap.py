@@ -3,7 +3,7 @@ from constraint import Constraint, Unassigned
 
 class NoOverlapConstraint(Constraint):
     """
-    Constraint enforcing that vegetables are aligned on the layout
+    Constraint enforcing no vegetable overlap on the layout
     """
 
     def __call__(
