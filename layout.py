@@ -2,7 +2,7 @@
 This is the layout module
 """
 from flask import jsonify
-from garden_solver import *
+from solver.garden_solver import *
 import logging
 
 from model.garden import Garden
