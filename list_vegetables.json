@@ -1,0 +1,35 @@
+{
+    "vegetables":  [
+        {
+            "name": "tomato",
+            "id": 1,
+            "shape_width": 5,
+            "shape_height": 3
+        }, {
+            "name": "carrot",
+            "id": 2,
+            "shape_width": 4,
+            "shape_height": 2
+        }, {
+            "name": "oignon",
+            "id": 3,
+            "shape_width": 3,
+            "shape_height": 2
+        },{
+            "name": "weed",
+            "id": 4,
+            "shape_width": 10,
+            "shape_height": 5
+        }, {
+            "name": "garlic",
+            "id": 5,
+            "shape_width": 4,
+            "shape_height": 2
+        }, {
+            "name": "salad",
+            "id": 6,
+            "shape_width": 3,
+            "shape_height": 2
+        }
+    ]
+}

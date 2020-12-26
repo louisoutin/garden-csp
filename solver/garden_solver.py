@@ -1,22 +1,42 @@
-from constraint import Problem, BacktrackingSolver
+import random
+from typing import List
+import numpy as np
 
-from constraints.alignment import AlignmentConstraint
-from constraints.filling import FillingRatioConstraint
-from constraints.no_overlap import NoOverlapConstraint
+import greedypacker
+
+from model.vegetable import Vegetable
+from model.garden_proposal import GardenProposal
 
 
-class GardenSolver:
-    def __init__(self):
-        self.problem = Problem(BacktrackingSolver())
-        self.problem.addVariable("a", [1, 2, 3])
-        self.problem.addVariable("b", [4, 5, 6])
-        self.add_constraints()
+def get_proposal(width: int,
+                 height: int,
+                 vegetables: List[Vegetable],
+                 ) -> GardenProposal:
 
-    def add_constraints(self):
-        self.problem.addConstraint(AlignmentConstraint())
-        self.problem.addConstraint(FillingRatioConstraint(0.75))
-        self.problem.addConstraint(NoOverlapConstraint())
-        return
+    # Making sure the garden is not a single point or empty
+    assert width >= 2 and height >= 2
+    # TODO: We can reimplement our own heuristic and packing_algo depending on customer needs.
+    garden = greedypacker.BinManager(width, height, sorting=False, pack_algo='shelf',
+                                     heuristic='best_width_fit', rotation=True)
+    random.shuffle(vegetables)
 
-    def solve(self):
-        return self.problem.getSolutions()
+    for v in vegetables:
+        garden.add_items(greedypacker.Item(v.id, v.name, v.shape_width, v.shape_height))
+
+    garden.execute()
+    # garden.bins[0] : We take only the first bin as we have only 1 field to grow veggies
+    return GardenProposal(width, height, vegetables, garden.bins[0].items)
+
+
+def get_proposals(width: int,
+                  height: int,
+                  vegetables: List[Vegetable],
+                  nb_proposals: int
+                  ) -> List[GardenProposal]:
+    return [get_proposal(width, height, vegetables) for i in range(nb_proposals)]
+
+
+if __name__ == "__main__":
+    veggies = Vegetable.get_vegetables()
+    proposal = get_proposals(15, 5, veggies, nb_proposals=5)
+    [print("\nProposal "+str(i)+":\n", p.__repr__()[1:]) for i, p in enumerate(proposal)]
