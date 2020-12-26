@@ -2,11 +2,10 @@
 This is the layout module
 """
 from flask import jsonify
-from solver.garden_solver import *
 import logging
 
-from model.garden_proposal import GardenProposal
-from solver.garden_solver import get_proposals
+from model.vegetable import Vegetable
+from solver.greedy_solver import get_proposals
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('layout')

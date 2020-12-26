@@ -26,10 +26,25 @@
             "shape_width": 4,
             "shape_height": 2
         }, {
-            "name": "salad",
+            "name": "eggplant",
             "id": 6,
+            "shape_width": 4,
+            "shape_height": 7
+        }, {
+            "name": "salad",
+            "id": 7,
             "shape_width": 3,
             "shape_height": 2
+        }, {
+            "name": "cilentro",
+            "id": 8,
+            "shape_width": 7,
+            "shape_height": 7
+        }, {
+            "name": "minth",
+            "id": 9,
+            "shape_width": 10,
+            "shape_height": 8
         }
     ]
 }
