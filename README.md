@@ -1,5 +1,5 @@
 # Garden Layout Planner 
-Garden Layout Planner using Constraint Satisfaction Problem solver.
+Garden Layout Planner using Greedy Algorithms (taken and adapted from greedypacker repo).
 
 ## Usage
 
